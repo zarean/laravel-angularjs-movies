@@ -12,5 +12,6 @@ class CastsTableSeeder extends Seeder
     public function run()
     {
         //
+        factory(App\Cast::class, 5)->create();
     }
 }

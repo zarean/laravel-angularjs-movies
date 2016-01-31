@@ -12,8 +12,12 @@ class MoviesTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Movie::class, 50)->create()->each(function($m) {
-            $m->casts()->save(factory(App\Cast::class)->make());
-        });
+        $movieTitles = ['Star Wars 1', 'Star Wars 2', 'Star Wars 3', 'Batman', 'Godfather', 'Avatar'];
+        foreach($movieTitles as $movieTitle){
+            $movie = new \App\Movie();
+            $movie->title = $movieTitle;
+            $movie->save();
+        }
+
     }
 }

@@ -23,11 +23,6 @@ Route::get('/', function () {
 });
 
 /**
- * Generate Data
- */
-Route::get('/gendata', 'DataGeneratorController@generate');
-
-/**
  * Query
  */
 Route::get('/query', function (Request $request) {
