@@ -23,26 +23,9 @@ Route::get('/', function () {
 });
 
 /**
- * Display
+ * Generate Data
  */
-Route::get('/gendata', function () {
-    $movienames = ['Martian','Avatar','Up','Star Wars','Jurassic World','Ant Man','Minions','Mad Max','Interstellar'];
-    $castnames = ['Ali Zarean','Mahmod Karimian','Mohamad FrznPr','Nima'];
-
-    Movie::truncate();
-    foreach($movienames as $moviename){
-        $movie = new Movie();
-        $movie->title = $moviename;
-        $movie->save();
-    }
-
-    Cast::truncate();
-    foreach($castnames as $castname){
-        $cast = new Cast();
-        $cast->name = $castname;
-        $cast->save();
-    }
-});
+Route::get('/gendata', 'DataGeneratorController@generate');
 
 /**
  * Query
