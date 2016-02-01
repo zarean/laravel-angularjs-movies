@@ -1,67 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>SMDB</title>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>SMDB</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="{{ elixir('css/app.css') }}" rel="stylesheet" type="text/css" media="screen">
+</head>
+<body style="background: black !important;">
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+<div class="col-sm-offset-4 col-sm-4">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+    <br>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Search
+        </div>
+        <div class="panel-body">
+            <!-- Search Form -->
+            <form class="form-search" action="/query" method="GET">
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-
-        <div>
-
-            <!-- Find Movie Form -->
-            <form action="/query" method="GET">
-
-                <!-- Movie Name -->
-                <div>
-                    <label for="query">Query</label>
-
-                    <div>
-                        <input type="text" name="q" id="query-string">
-                    </div>
-                </div>
-
-                <!-- Add Button -->
-                <div>
-                    <div>
-                        <button type="submit">
-                            +
-                        </button>
-                    </div>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="q" id="query-string" placeholder="search"
+                           @if(isset($results)) value="{{$results['q']}}" @endif
+                    >
+                    <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    GO
+                </button>
+                </span>
                 </div>
             </form>
         </div>
+    </div>
 
-        @yield('content')
-    </body>
+    @yield('content')
+</div>
+</body>
 </html>
