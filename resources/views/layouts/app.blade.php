@@ -47,7 +47,7 @@
                     <label for="query">Query</label>
 
                     <div>
-                        <input type="text" name="string" id="query-string" style="display:inline">
+                        <input type="text" name="q" id="query-string">
                     </div>
                 </div>
 

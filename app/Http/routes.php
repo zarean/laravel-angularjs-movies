@@ -19,14 +19,11 @@ use Illuminate\Http\Request;
  * Display
  */
 Route::get('/', function () {
-    return view('app');
+    return view('layouts.app');
 });
 
 /**
  * Query
  */
-Route::get('/query', function (Request $request) {
-    $string = $request->string;
-    echo $string;
-});
+Route::get('/query', 'QueryController@query');
 
