@@ -13,35 +13,39 @@
 <body ng-app="smdbApp">
 
 <div layout="row" layout-align="center center">
-    <div ng-controller="DemoCtrl as ctrl" flex flex-gt-xs="50" layout="row" ng-cloak>
-        <md-content flex class="md-padding">
-            <form ng-submit="$event.preventDefault()">
-                <md-autocomplete
-                        md-no-cache="ctrl.noCache"
-                        md-selected-item="ctrl.selectedItem"
-                        md-search-text="ctrl.searchText"
-                        md-items="item in ctrl.query(ctrl.searchText)"
-                        md-item-text="item.name"
-                        md-min-length="0"
-                        placeholder="Search">
-                    <md-item-template class="dev">
-                        <div layout="row" layout-align="center left">
-                            <div layout="column" layout-align="center center" style="padding-right: 10px;">
-                                <i class="material-icons color">{{item.icon}}</i>
-                            </div>
+    <div ng-controller="AutoCompleteCtrl as ctrl" flex flex-gt-xs="50" layout="row" ng-cloak>
+                <md-content flex class="md-padding">
+                    <form ng-submit="$event.preventDefault()">
+                        <md-autocomplete
+                                ng-enter="Enter();"
+                                md-no-cache="ctrl.noCache"
+                                md-selected-item="ctrl.selectedItem"
+                                md-search-text="ctrl.searchText"
+                                md-search-text_changed="ctrl.searchTextChange"
+                                md-items="item in ctrl.query(ctrl.searchText)"
+                                md-item-text="item.name"
+                                md-min-length="0"
+                                placeholder="Search">
+                            <md-item-template class="dev">
+                                <div layout="row" layout-align="center left">
+                                    <div layout="column" layout-align="center center" style="padding-right: 10px;">
+                                        <i class="material-icons color">{{item.icon}}</i>
+                                    </div>
                             <span md-highlight-text="ctrl.searchText"
                                   md-highlight-flags="^i">{{item.name}}</span>
-                        </div>
-                    </md-item-template>
-                    <md-not-found>
-                        "{{ctrl.searchText}}" Not Found
-                        <!--<a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>-->
-                    </md-not-found>
-                </md-autocomplete>
-            </form>
-        </md-content>
-    </div>
+                                </div>
+                            </md-item-template>
+                        </md-autocomplete>
+                    </form>
 
+                </md-content>
+    </div>
+</div>
+
+<div layout="row" layout-align="center center">
+    <div ng-controller="ResultsCtrl" flex flex-gt-xs="50" layout="row" ng-cloak>
+        {{ pal }}
+    </div>
 </div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
