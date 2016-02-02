@@ -18,7 +18,7 @@
                         <tr>
                             <td>
                                 <div>
-                                    {{$movie->title}}
+                                    {{$movie->name}}
                                 </div>
                             </td>
                             <td>
@@ -57,7 +57,7 @@
                             <td>
                                 @foreach($cast->movies as $movie)
                                     <div>
-                                        {{$movie->title}}
+                                        {{$movie->name}}
                                     </div>
                                 @endforeach()
                             </td>

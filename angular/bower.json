@@ -1,0 +1,26 @@
+{
+  "name": "smdb",
+  "homepage": "https://github.com/angular/angular-phonecat",
+  "authors": [
+    "ali zarean <ali.zarean@gmail.com>"
+  ],
+  "description": "small movie database",
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0",
+    "angular": "^1.4.9",
+    "angular-material": "^1.0.4"
+  }
+}

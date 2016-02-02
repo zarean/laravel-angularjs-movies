@@ -22,8 +22,12 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-/**
- * Query
- */
-Route::get('/query', 'QueryController@query');
+
+Route::group(['middleware' => 'cors'], function(){
+    /**
+     * Query
+     */
+    Route::get('/query', 'QueryController@query');
+});
+
 

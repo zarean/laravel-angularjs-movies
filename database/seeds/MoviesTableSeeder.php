@@ -12,10 +12,10 @@ class MoviesTableSeeder extends Seeder
     public function run()
     {
         //
-        $movieTitles = ['Star Wars 1', 'Star Wars 2', 'Star Wars 3', 'Batman', 'Godfather', 'Avatar'];
-        foreach($movieTitles as $movieTitle){
+        $movieNames = ['Star Wars 1', 'Star Wars 2', 'Star Wars 3', 'Batman', 'Godfather', 'Avatar'];
+        foreach($movieNames as $movieName){
             $movie = new \App\Movie();
-            $movie->title = $movieTitle;
+            $movie->name = $movieName;
             $movie->save();
         }
 

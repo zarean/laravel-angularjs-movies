@@ -14,10 +14,10 @@ class QueryController extends Controller
     {
         $q = $request->input('q');
         $results["q"] = $q;
-        $results["movies"] = Movie::where('title', 'like' ,'%'.$q.'%')->with('casts')->get();
+        $results["movies"] = Movie::where('name', 'like' ,'%'.$q.'%')->with('casts')->get();
         $results["casts"] = Cast::where('name', 'like' ,'%'.$q.'%')->with('movies')->get();
         return view('results', ['results' => $results]);
-        //return $results;
+//        return $results;
     }
 
 }
