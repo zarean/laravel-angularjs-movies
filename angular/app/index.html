@@ -13,66 +13,85 @@
 <body ng-app="smdbApp" ng-cloak>
 
 <!--<div class="dev" layout="row" flex layout-align="center center">-->
-    <!--<div class="dev" flex="50">-->
-        <!--<div class="dev">-->
-            <!--one-->
-        <!--</div>-->
-        <!--<div class="dev">-->
-            <!--two-->
-        <!--</div>-->
-        <!--<div class="dev">-->
-            <!--three-->
-        <!--</div>-->
-    <!--</div>-->
+<!--<div class="dev" flex="50">-->
+<!--<div class="dev">-->
+<!--one-->
 <!--</div>-->
-
-<div layout="row" layout-align="center center">
-    <div flex flex-gt-xs="50">
-        <md-content ng-controller="AutoCompleteCtrl as ctrl" class="md-padding">
-            <form ng-submit="$event.preventDefault()">
-                <md-autocomplete
-                        ng-enter="Enter();"
-                        md-no-cache="ctrl.noCache"
-                        md-selected-item="ctrl.selectedItem"
-                        md-search-text="ctrl.searchText"
-                        md-search-text-change="ctrl.searchTextChange()"
-                        md-items="item in ctrl.query(ctrl.searchText)"
-                        md-item-text="item.name"
-                        md-min-length="1"
-                        placeholder="Search">
-                    <md-item-template class="dev">
-                        <div layout="row" layout-align="center left">
-                            <div layout="column" layout-align="center center" style="padding-right: 10px;">
-                                <i class="material-icons color">{{item.icon}}</i>
-                            </div>
+<!--<div class="dev">-->
+<!--two-->
+<!--</div>-->
+<!--<div class="dev">-->
+<!--three-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<md-content>
+    <div layout="row" flex layout-align="center center">
+        <div flex flex-gt-xs="50">
+            <md-content ng-controller="AutoCompleteCtrl as ctrl" class="md-padding">
+                <form ng-submit="$event.preventDefault()">
+                    <md-autocomplete
+                            ng-enter="Enter();"
+                            md-no-cache="ctrl.noCache"
+                            md-selected-item="ctrl.selectedItem"
+                            md-search-text="ctrl.searchText"
+                            md-search-text-change="ctrl.searchTextChange()"
+                            md-items="item in ctrl.query(ctrl.searchText)"
+                            md-item-text="item.name"
+                            md-min-length="1"
+                            placeholder="Search">
+                        <md-item-template class="dev">
+                            <div layout="row" layout-align="center left">
+                                <div layout="column" layout-align="center center" style="padding-right: 10px;">
+                                    <i class="material-icons color">{{item.icon}}</i>
+                                </div>
                             <span md-highlight-text="ctrl.searchText"
                                   md-highlight-flags="^i">{{item.name}}</span>
-                        </div>
-                    </md-item-template>
-                </md-autocomplete>
-            </form>
-        </md-content>
+                            </div>
+                        </md-item-template>
+                    </md-autocomplete>
+                </form>
+            </md-content>
 
-        <md-content ng-controller="ResultsCtrl as ctrl" class="md-padding">
-            <md-card ng-repeat="item in ctrl.items">
-                <md-card-header>
-                    <md-card-avatar>
-                        <md-icon class="material-icons">{{item.icon}}</md-icon>
-                    </md-card-avatar>
-                    <md-card-header-text>
-                        <span class="md-title">{{item.name}}</span>
-                    <span class="md-subhead">
-                        <i ng-repeat="subitem in item.sub">
-                            {{subitem.name}},
-                        </i>
-                    </span>
-                    </md-card-header-text>
-                </md-card-header>
-            </md-card>
-        </md-content>
+            <md-content ng-controller="ResultsCtrl as ctrl" class="md-padding">
+                <div ng-repeat="item in ctrl.items">
+                    <ng-item-card ng-item="item" ng-movies="{{ctrl.movies}}"></ng-item-card>
+                </div>
+            </md-content>
+
+            <!--<md-content ng-controller="ResultsCtrl as ctrl" class="md-padding">-->
+            <!--<md-card ng-repeat="item in ctrl.items">-->
+            <!--<md-card-header>-->
+            <!--<md-card-avatar>-->
+            <!--<md-icon class="material-icons">{{item.icon}}</md-icon>-->
+            <!--</md-card-avatar>-->
+            <!--<md-card-header-text>-->
+            <!--<span class="md-title">{{item.name}}</span>-->
+            <!--<span class="md-subhead">{{item.type}}</span>-->
+            <!--</md-card-header-text>-->
+            <!--</md-card-header>-->
+            <!--<md-card-title>-->
+            <!--<md-card-title-text>-->
+            <!--<span class="md-headline">{{item.subtype}}</span>-->
+            <!--</md-card-title-text>-->
+            <!--</md-card-title>-->
+            <!--<md-card-content>-->
+            <!--<p>-->
+            <!--<i ng-repeat="subitem in item.sub">-->
+            <!--{{subitem.name}},-->
+            <!--</i>-->
+            <!--</p>-->
+            <!--</md-card-content>-->
+            <!--<md-card-actions layout="row" layout-align="end center">-->
+            <!--<md-button class="md-icon-button" aria-label="Edit">-->
+            <!--<md-icon class="material-icons">edit</md-icon>-->
+            <!--</md-button>-->
+            <!--</md-card-actions>-->
+            <!--</md-card>-->
+            <!--</md-content>-->
+        </div>
     </div>
-</div>
-
+</md-content>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/angular/angular.min.js"></script>
 <script src="bower_components/angular-material/angular-material.min.js"></script>
@@ -80,7 +99,7 @@
 <script src="bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="bower_components/angular-messages/angular-messages.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script>-->
 
 <script src="js/app.js"></script>
 </body>

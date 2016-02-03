@@ -30,6 +30,8 @@ Route::group(['middleware' => 'cors'], function(){
     Route::get('/query', 'QueryController@query');
 
     Route::get('/fastquery', 'FastQueryController@query');
+
+    Route::put('/update/{id}', 'UpdateController@query');
 });
 
 

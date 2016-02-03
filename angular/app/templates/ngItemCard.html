@@ -1,0 +1,78 @@
+<md-card>
+    <md-card-header>
+        <md-card-avatar>
+            <md-icon class="material-icons">{{ngItem.icon}}</md-icon>
+        </md-card-avatar>
+        <md-card-header-text>
+            <span class="md-title">{{ngItem.name}}</span>
+            <span class="md-subhead">{{ngItem.type}}</span>
+        </md-card-header-text>
+    </md-card-header>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{ngItem.subtype}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <!--View Mode-->
+    <div ng-show="mode">
+        <md-card-content>
+            <div ng-switch on="ngItem.type">
+                <div ng-switch-when="Actor">
+                    <p>
+                    <div ng-repeat="movie in movies">
+                        <div ng-if="movie.member">
+                            {{movie.name}},
+                        </div>
+                    </div>
+                    </p>
+                </div>
+                <div ng-switch-default>
+                    <p>
+                    <i ng-repeat="subitem in ngItem.sub">
+                    {{subitem.name}},
+                    </i>
+                    </p>
+                </div>
+            </div>
+
+
+        </md-card-content>
+        <div ng-switch on="ngItem.type">
+            <div ng-switch-when="Actor">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Edit" ng-click="editClicked()">
+                        <md-icon class="material-icons">edit</md-icon>
+                    </md-button>
+                </md-card-actions>
+            </div>
+            <div ng-switch-default>
+            </div>
+        </div>
+    </div>
+    <!--Edit Mode-->
+    <div ng-hide="mode">
+        <md-card-content>
+            <p>
+                <i ng-repeat="movie in movies">
+                    <md-checkbox ng-model="movie.member">
+                        {{movie.name}}
+                    </md-checkbox>
+                    <br>
+                </i>
+            </p>
+        </md-card-content>
+
+        <div ng-switch on="ngItem.type">
+            <div ng-switch-when="Actor">
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-icon-button" aria-label="Edit" ng-click="doneClicked()">
+                        <md-icon class="material-icons">done</md-icon>
+                    </md-button>
+                </md-card-actions>
+            </div>
+            <div ng-switch-default>
+            </div>
+        </div>
+    </div>
+
+</md-card>

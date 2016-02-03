@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cast extends Model
 {
-    protected $hidden = array('id', 'created_at', 'updated_at');
+    protected $hidden = array('created_at', 'updated_at');
 
     /**
      * return movies of the cast
