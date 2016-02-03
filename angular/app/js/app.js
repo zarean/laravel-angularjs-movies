@@ -20,8 +20,8 @@
         };
     }
 
-    function sharedProperties() {
-        var query = 'aa';
+    function sharedProperties($rootScope) {
+        var query = '';
 
         return {
             getQuery: function () {
@@ -29,23 +29,45 @@
             },
             setQuery: function (value) {
                 query = value;
+                $rootScope.$broadcast('QUERY_SET_TAG', '');
             }
         };
     }
 
     function resultsCtrl($http, $scope, sharedProperties) {
-        $scope.pal = sharedProperties.getQuery();
+        var _this = this;
+
+        $scope.$on('QUERY_SET_TAG', function (response) {
+            var url = "http://localhost:8000/query?q=" + sharedProperties.getQuery();
+            $http.get(url)
+                .then(function (response) {
+                    angular.forEach(response.data.movies, function (value) {
+                        value.sub = value.casts;
+                        delete value.casts;
+                        value.icon = 'movie';
+                    });
+                    angular.forEach(response.data.casts, function (value) {
+                        value.sub = value.movies;
+                        delete value.movies;
+                        value.icon = 'face';
+                    });
+                    $scope.items = response.data.movies.concat(response.data.casts);
+                    _this.items = response.data.movies.concat(response.data.casts);
+                });
+
+        })
+
     }
 
     function autoCompleteCtrl($http, $scope, sharedProperties) {
         var _this = this;
 
         _this.searchTextChange = function (text) {
-            sharedProperties.set(text);
+            //sharedProperties.set(text);
         }
 
         _this.query = function (text) {
-            var url = "http://localhost:8000/fastquery?q=" + text;
+            var url = "http://localhost:8000/fastquery?q=" + _this.searchText;
 
             return $http.get(url)
                 .then(function (response) {
@@ -60,7 +82,7 @@
                 });
         }
 
-        $scope.Enter = function(){
+        $scope.Enter = function () {
             $scope.$$childHead.$mdAutocompleteCtrl.hidden = true;
             sharedProperties.setQuery(_this.searchText);
         };
